@@ -8,7 +8,7 @@ project(custom_vst
 option(SMTG_ADD_VST3_PLUGINS_SAMPLES "Add VST3 Plug-ins Samples to the solution" ON)
 option(SMTG_ADD_VSTGUI "Add VSTGUI Support" ON)
 
-set(ROOT "${CMAKE_CURRENT_SOURCE_DIR}/3rdParty/vst3sdk")
+set(ROOT "${CMAKE_CURRENT_SOURCE_DIR}/third-party/vst3sdk")
 set(SDK_ROOT "${ROOT}")
 set(SDK_BASE "${SDK_ROOT}/base")
 set(SDK_CMAKE "${SDK_ROOT}/cmake")
