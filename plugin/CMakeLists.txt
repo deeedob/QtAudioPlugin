@@ -6,13 +6,15 @@ project(basic
         )
 
 smtg_add_vst3plugin(basic
-        include/plugids.h
+        include/ids.h
         include/version.h
-        source/plugfactory.cpp
-        source/plugcontroller.cpp
-        source/plugcontroller.h
-        source/plugprocessor.cpp
-        source/plugprocessor.h
+        source/factory.cpp
+        source/plugin_controller.cpp
+        source/plugin_controller.h
+        source/plugin_processor.cpp
+        source/plugin_processor.h
+        source/plugin_view.cpp
+        source/plugin_view.h
         )
 
 
@@ -24,5 +26,5 @@ target_include_directories(basic PUBLIC
 
 target_link_libraries(basic
         PRIVATE
-        sdk
+        AudioPlugin
         )
