@@ -7,7 +7,7 @@
 class QVstApplicationPrivate;
 
 // TODO add logging/console/debug options
-class QVstApplication : QApplication
+class QVstApplication : public QApplication
 {
     Q_OBJECT
 public:

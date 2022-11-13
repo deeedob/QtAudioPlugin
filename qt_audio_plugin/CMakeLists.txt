@@ -4,10 +4,10 @@ set(CMAKE_AUTOMOC ON)
 
 project(QtAudioPlugin)
 
-find_package(Qt6 COMPONENTS Core Gui Widgets REQUIRED)
+find_package(Qt6 COMPONENTS Core Widgets REQUIRED)
 
 #DEVELOPMENT, RELEASE, _DEBUG, or NDEBUG  must be defined! fdebug.h
-add_definitions(-DDEVELOPMENT )
+#add_definitions(-DDEVELOPMENT )
 
 set(SOURCES
         qvstlibentry.cpp
@@ -17,6 +17,7 @@ set(SOURCES
         qvsteditorview.cpp
         qvstaudioeffect.cpp
         qvstparametercontainer.cpp
+        qvsthostedwidget.cpp
         )
 set(HEADERS
         #qvstconsole.h
@@ -25,9 +26,8 @@ set(HEADERS
         qvsteditorview.h
         qvstaudioeffect.h
         qvstparametercontainer.h
+        qvsthostedwidget.h
         )
-
-include_directories(/home/dennis/User/Coding/ReposExt/QtAll/qt6/qtbase)
 
 add_library(AudioPlugin
         SHARED
@@ -36,9 +36,9 @@ add_library(AudioPlugin
         )
 
 target_link_libraries(AudioPlugin
+        base
         sdk
         Qt6::Core
-        Qt6::Gui
         Qt6::Widgets
         )
 

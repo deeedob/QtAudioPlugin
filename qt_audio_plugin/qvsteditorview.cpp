@@ -2,6 +2,8 @@
 #include <QLayout>
 #include "qvsteditorview.h"
 #include "qvstparametercontainer.h"
+#include "qvstapplication.h"
+#include "qvsthostedwidget.h"
 
 QVstEditorView::QVstEditorView(Steinberg::Vst::EditController *controller, Steinberg::ViewRect *size)
     : Steinberg::Vst::EditorView(controller, size), m_hostedWidget(nullptr)
@@ -23,13 +25,13 @@ Steinberg::tresult QVstEditorView::isPlatformTypeSupported(Steinberg::FIDString 
 
 Steinberg::tresult QVstEditorView::attached(void *parent, Steinberg::FIDString type)
 {
-    m_hostedWidget = new QWidget();
+    m_hostedWidget = new QVstHostedWidget();
     QLayout* layout = createLayout();
     if (layout != nullptr) {
         m_hostedWidget->setLayout(layout);
         m_hostedWidget->updateGeometry();
     }
-    return Steinberg::Vst::EditorView::attached(parent, type);
+    return Steinberg::kResultOk;
 }
 
 Steinberg::tresult QVstEditorView::removed()

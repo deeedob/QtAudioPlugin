@@ -6,6 +6,7 @@
 class QWidget;
 class QLayout;
 class QVstParameterContainer;
+class QVstHostedWidget;
 
 class QVstEditorView : public Steinberg::Vst::EditorView
 {
@@ -25,9 +26,9 @@ public:
 protected:
     virtual QLayout* createLayout();
 private:
-    QWidget* m_hostedWidget;
     QVstParameterContainer* m_paramContainer;
-    //QVstHostedWidget* m_hostedWidget;
+    //QWidget* m_hostedWidget;
+    QVstHostedWidget* m_hostedWidget;
 };
 
 

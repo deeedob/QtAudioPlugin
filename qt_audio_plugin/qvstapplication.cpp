@@ -32,7 +32,7 @@ QVstApplication::QVstApplication(int argc, char** argv)
     //d_ptr->console = nullptr;
     //if ((flags & Flags::Flag_CreateConsole) != 0)
     //    d_ptr->console = new QVstConsole(this);
-    //setAttribute(Qt::AA_NativeWindows, true);
+    setAttribute(Qt::AA_NativeWindows, true);
 }
 
 QVstApplication::~QVstApplication()
@@ -50,7 +50,7 @@ QVstApplication *QVstApplication::createInstance()
     auto* instance = new QVstApplication(argc, nullptr);
     //if ((flags & Flag_CreateConsole) != 0)
     //    qInstallMessageHandler(msgHandler);
-    //return instance;
+    return instance;
 }
 
 QVstApplication *QVstApplication::instance()

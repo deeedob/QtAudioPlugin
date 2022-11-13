@@ -1,6 +1,7 @@
 // We need to start a QApplication when the shared library is loaded
 #include "qvstapplication.h"
 
+//TODO: make this properly working on OSX and Windows
 #ifdef HAVE_WINDOWS
     BOOL APIENTRY DllMain( HMODULE hModule,
                            DWORD  ul_reason_for_call,
@@ -27,9 +28,6 @@
         return TRUE;
     }
     #else //Unix, Linux etc
-    #ifdef __cplusplus
-    extern "C" {
-    #endif
         // gets called when the shared library gets loaded
         __attribute__((constructor))
         static void initializer(int argc, char** argv, char** envp)
@@ -38,9 +36,7 @@
             #ifdef QVST_CONSOLE
                 flags |= QVstApplication::Flag_CreateConsole;
             #endif
-            //QVstApplication::createInstance();
-            //QApplication app(argc, argv);
-            //app.exec();
+            QVstApplication::createInstance();
         }
         // gets called after shared lib exit
         __attribute__((destructor))
@@ -49,7 +45,4 @@
             delete qApp;
         }
 
-    #ifdef __cplusplus
-    };
-    #endif
 #endif
